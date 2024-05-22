@@ -100,5 +100,9 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/go,linux,macos,windows
 
-*.env
-*.db
+.git/
+
+**/.git/
+
+**/*.env
+**/*.db

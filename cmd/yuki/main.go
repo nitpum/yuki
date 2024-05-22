@@ -7,8 +7,7 @@ import (
 	"syscall"
 
 	"github.com/joho/godotenv"
-	"gtihub.com/nitpum/yuki/intenral/bot"
-	"gtihub.com/nitpum/yuki/internal/db"
+	"gtihub.com/nitpum/yuki/internal/bot"
 )
 
 func main() {
@@ -25,7 +24,10 @@ func main() {
 		return
 	}
 
-  db.InitDatabase("database.db")
+	// if err := db.InitDatabase("./database.db"); err != nil {
+	// 	slog.Error("cannot init database", "error", err)
+	// 	return
+	// }
 
 	bot.Start(token)
 
@@ -33,4 +35,3 @@ func main() {
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-sc
 }
-

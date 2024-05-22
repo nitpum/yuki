@@ -1,14 +1,15 @@
 package db
 
 import (
+	"database/sql"
 	_ "modernc.org/sqlite"
 )
 
-func InitDatabase(dbPath string) error {
-  _, err := sql.Open("sqlite", dbPath)
+func ConnectDatabase(dbPath string) (*sql.DB, error) {
+  db, err := sql.Open("sqlite", dbPath)
 	if err != nil {
-		return err
-	}  
+		return nil, err
+	} 
 
-  return nil
+  return db, nil
 }
