@@ -15,7 +15,7 @@ FROM alpine:3.14 AS runtime
 
 WORKDIR /app
 
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/release/yuki /app/yuki
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/yuki /app/yuki
 
 USER yuki:yuki
 
