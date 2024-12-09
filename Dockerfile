@@ -8,13 +8,14 @@ COPY Cargo.toml .
 COPY Cargo.lock .
 COPY . .
 
+RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --target x86_64-unknown-linux-musl --release
 
 FROM alpine:3.14 AS runtime
 
 WORKDIR /app
 
-COPY --from=builder /app/target/release/yuki /app/yuki
+COPY --from=builder /app/target/x86_64-unknown-linux-muslrelease/release/yuki /app/yuki
 
 USER yuki:yuki
 
