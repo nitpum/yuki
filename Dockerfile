@@ -5,7 +5,6 @@ WORKDIR /app
 RUN apk add pkgconfig openssl-dev libc-dev
 
 COPY Cargo.toml .
-COPY Cargo.lock .
 COPY . .
 
 RUN cargo build --target x86_64-unknown-linux-musl --release
